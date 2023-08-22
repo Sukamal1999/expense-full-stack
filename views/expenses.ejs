@@ -1,0 +1,25 @@
+<% layout('layout') %>
+<h2>Expenses</h2>
+<ul>
+  <% expenses.forEach(expense => { %>
+    <li>
+      <%= expense.name %> - <%= expense.amount %> - <%= expense.date %>
+      <form method="post" action="/expenses/<%= expense.id %>/delete">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+<h2>Add New Expense</h2>
+<form method="post" action="/expenses">
+  <label for="name">Name</label>
+  <input type="text" name="name" required>
+  <br>
+  <label for="amount">Amount</label>
+  <input type="number" name="amount" step="0.01" required>
+  <br>
+  <label for="date">Date</label>
+  <input type="date" name="date" required>
+  <br>
+  <button type="submit">Add Expense</button>
+</form>
